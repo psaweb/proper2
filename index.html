@@ -2,10 +2,36 @@
 <html>
     <head>
         <title>PSAWeb</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css/dist/light.min.css">
+        <!--link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css/dist/light.min.css"-->
+        <link rel="stylesheet" href="light.standalone.css">
     </head>
     <body>
         <h1>Hello!</h1>
+        <form id="inputform">
+            <fieldset>
+                <legend>Input</legend>
+                <label for="psa0">PSA0</label>
+                <input name="psa0" type="number" step="0.01" placeholder="ng/ml">
+                <label for="psa1">PSA1</label>
+                <input name="psa1" type="number" step="0.01" placeholder="ng/ml">
+                <label for="psa2">PSA2</label>
+                <input name="psa2" type="number" step="0.01" placeholder="ng/ml">
+                <label for="psa3">PSA3</label>
+                <input name="psa3" type="number" step="0.01" placeholder="ng/ml">
+                <label for="psa4">PSA4</label>
+                <input name="psa4" type="number" step="0.01" placeholder="ng/ml">
+                <label for="psa5">PSA5</label>
+                <input name="psa5" type="number" step="0.01" placeholder="ng/ml">
+                <label for="psa6">PSA6</label>
+                <input name="psa6" type="number" step="0.01" placeholder="ng/ml">
+                <label for="psa7">PSA7</label>
+                <input name="psa7" type="number" step="0.01" placeholder="ng/ml">
+                <button type="submit">Calculate</button>
+                <button type="reset">Reset</button>
+            </fieldset>
+        </form>
+        <div id="plotarea"></div>
     </body>
+    <script src="plotly-latest.min.js"></script>
     <script src="index.js"></script>
 </html>
