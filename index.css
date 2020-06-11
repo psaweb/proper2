@@ -1,0 +1,20 @@
+.grid-container {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 15px;
+
+    grid-template-areas: 'psa date result';
+}
+
+.psa-area {
+    grid-area: psa;
+}
+
+.date-area {
+    grid-area: date;
+}
+
+.result-area {
+    grid-area: result;
+}
