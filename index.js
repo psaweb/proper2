@@ -4,7 +4,7 @@ inputform.addEventListener('submit', (e) => {
     let x = [];
     let y = [];
     let lny = [];
-    for(let i = 0; i < 8; i++){
+    for(let i = 1; i < 8; i++){
         let ytemp = parseFloat(inputform.elements['psa'+i].value);
         if(isNaN(ytemp)) break;
         x.push(i);
@@ -29,7 +29,7 @@ inputform.addEventListener('submit', (e) => {
         y: ynew,
         mode: 'lines'
     }
-    Plotly.newPlot('plotarea', [trace1, trace2]);
+    Plotly.newPlot('plotarea', [trace1, trace2], {}, {displaylogo: false});
 });
 
 
