@@ -1,10 +1,10 @@
 .grid-container {
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     column-gap: 15px;
 
-    grid-template-areas: 'psa date result';
+    grid-template-areas: 'psa date';
 }
 
 .psa-area {
@@ -15,6 +15,6 @@
     grid-area: date;
 }
 
-.result-area {
-    grid-area: result;
+.radio-btns {
+    padding-bottom: 15px;
 }

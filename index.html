@@ -9,80 +9,98 @@
     </head>
     <body>
         <h1>PSA Calculator</h1>
+        <details>
+            <summary>About</summary>
+            <p>Some descriptive text</p>
+        </details>
         <form id="inputform">
             <fieldset>
                 <legend>Input</legend>
                 <div class="grid-container">
-                    <div class="psa-area">
+                    <div>
                         <!--Other parameters-->
                         <label>PSA prior to prostatectomy, <em><b>PSA<sub>surg</sub></b></em></label>
-                        <input type="number" placeholder="ng/ml" required>
+                        <input type="number" placeholder="ng/ml" step="0.01" required>
                         
                         <label>Time between prostatectomy and SRT, <em><b>T<sub>surgery-SRT</sub></b></em></label>
                         <input type="number" placeholder="months" step="1" required>
 
                         <label>Gleason score, <em><b>GS</b></em></label>
-                        <input type="number" placeholder="GS">
+                        <input type="number" placeholder="GS" step="1" required>
 
-                        <label>Surgical margins, <em><b>Surgmarg</b></em></label>
-                        <div>
-                            <input type="radio" name="surgmarg" required>
-                            <label>Positive</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="surgmarg" required>
-                            <label>Negative</label>
-                        </div>
-
-
-                        <label>Seminal vesicle invasion, <em><b>Semves</b></em></label>
-                        <div>
-                            <input type="radio" name="semves" required>
-                            <label>Yes</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="semves" required>
-                            <label>No</label>
-                        </div>
-
-                        <!--Calculating k-value-->
-                        <label for="psa0">PSA at start of SRT, <em><b>PSA<sub>0</sub></b></em></label>
-                        <input name="psa0" type="number" step="0.01" placeholder="ng/ml" required>
-                        <label for="psa1">PSA week 1, <em><b>PSA<sub>1</sub></b></em></label>
-                        <input name="psa1" type="number" step="0.01" placeholder="ng/ml" required>
-                        <label for="psa2">PSA week 2, <em><b>PSA<sub>2</sub></b></em></label>
-                        <input name="psa2" type="number" step="0.01" placeholder="ng/ml" required>
-                        <label for="psa3">PSA week 3, <em><b>PSA<sub>3</sub></b></em></label>
-                        <input name="psa3" type="number" step="0.01" placeholder="ng/ml" required>
-                        <label for="psa4">PSA week 4, <em><b>PSA<sub>4</sub></b></em></label>
-                        <input name="psa4" type="number" step="0.01" placeholder="ng/ml" required>
-                        <label for="psa5">PSA week 5, <em><b>PSA<sub>5</sub></b></em></label>
-                        <input name="psa5" type="number" step="0.01" placeholder="ng/ml">
-                        <label for="psa6">PSA week 6, <em><b>PSA<sub>6</sub></b></em></label>
-                        <input name="psa6" type="number" step="0.01" placeholder="ng/ml">
-                        <label for="psa7">PSA week 7, <em><b>PSA<sub>7</sub></b></em></label>
-                        <input name="psa7" type="number" step="0.01" placeholder="ng/ml">
-                        <button type="submit">Calculate</button>
-                        <button type="reset">Reset</button>
                     </div>
-                    <div class="date-area">
-                        <label for="date0">Date</label>
-                        <input name="date0" type="date" required>
-                        <label for="date1">Date</label>
-                        <input name="date1" type="date" required>
-                        <label for="date2">Date</label>
-                        <input name="date2" type="date" required>
-                        <label for="date3">Date</label>
-                        <input name="date3" type="date" required>
-                        <label for="date4">Date</label>
-                        <input name="date4" type="date">
-                        <label for="date5">Date</label>
-                        <input name="date5" type="date">
-                        <label for="date6">Date</label>
-                        <input name="date6" type="date">
-                        <label for="date7">Date</label>
-                        <input name="date7" type="date">
+                    <div>
+                        <div class="radio-btns">
+                            <label>Surgical margins, <em><b>Surgmarg</b></em></label>
+                            <div>
+                                <input type="radio" name="surgmarg" required>
+                                <label>Positive</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="surgmarg" required>
+                                <label>Negative</label>
+                            </div>
+                        </div>
+                        <div class="radio-btns">
+                            <label>Seminal vesicle invasion, <em><b>Semves</b></em></label>
+                            <div>
+                                <input type="radio" name="semves" required>
+                                <label>Yes</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="semves" required>
+                                <label>No</label>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <fieldset>
+                    <!--Calculating k-value-->
+                    <legend>PSA decay constant, <em>k</em></legend>
+                    <div class="grid-container">
+                        <div class="psa-area">
+                            <label for="psa0">PSA at start of SRT, <em><b>PSA<sub>0</sub></b></em></label>
+                            <input name="psa0" type="number" step="0.01" placeholder="ng/ml" required>
+                            <label for="psa1">PSA week 1, <em><b>PSA<sub>1</sub></b></em></label>
+                            <input name="psa1" type="number" step="0.01" placeholder="ng/ml" required>
+                            <label for="psa2">PSA week 2, <em><b>PSA<sub>2</sub></b></em></label>
+                            <input name="psa2" type="number" step="0.01" placeholder="ng/ml" required>
+                            <label for="psa3">PSA week 3, <em><b>PSA<sub>3</sub></b></em></label>
+                            <input name="psa3" type="number" step="0.01" placeholder="ng/ml" required>
+                            <label for="psa4">PSA week 4, <em><b>PSA<sub>4</sub></b></em></label>
+                            <input name="psa4" type="number" step="0.01" placeholder="ng/ml">
+                            <label for="psa5">PSA week 5, <em><b>PSA<sub>5</sub></b></em></label>
+                            <input name="psa5" type="number" step="0.01" placeholder="ng/ml">
+                            <label for="psa6">PSA week 6, <em><b>PSA<sub>6</sub></b></em></label>
+                            <input name="psa6" type="number" step="0.01" placeholder="ng/ml">
+                            <label for="psa7">PSA week 7, <em><b>PSA<sub>7</sub></b></em></label>
+                            <input name="psa7" type="number" step="0.01" placeholder="ng/ml">
+                        </div>
+                        <div class="date-area">
+                            <label for="date0">Date</label>
+                            <input name="date0" type="date" required>
+                            <label for="date1">Date</label>
+                            <input name="date1" type="date" required>
+                            <label for="date2">Date</label>
+                            <input name="date2" type="date" required>
+                            <label for="date3">Date</label>
+                            <input name="date3" type="date" required>
+                            <label for="date4">Date</label>
+                            <input name="date4" type="date">
+                            <label for="date5">Date</label>
+                            <input name="date5" type="date">
+                            <label for="date6">Date</label>
+                            <input name="date6" type="date">
+                            <label for="date7">Date</label>
+                            <input name="date7" type="date">
+                        </div>
+                    </div>
+                </fieldset>
+                    <button type="submit">Calculate</button>
+                    <button type="reset">Reset</button>
+            </fieldset>
+            <fieldset>
+                <legend>Result</legend>
                     <div class="result-area">
                         <p><strong>k<sub>1w-3w</sub> : </strong><span id="k0"></span></p>
                         <p><strong>k<sub>1w-4w</sub> : </strong><span id="k1"></span></p>
@@ -90,7 +108,6 @@
                         <p><strong>k<sub>1w-6w</sub> : </strong><span id="k3"></span></p>
                         <p><strong>k<sub>1w-7w</sub> : </strong><span id="k4"></span></p>
                     </div>
-                </div>
             </fieldset>
         </form>
         <div id="plotarea"></div>
