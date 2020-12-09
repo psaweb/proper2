@@ -3,7 +3,8 @@
     <head>
         <title>PSAWeb</title>
         <!--link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css/dist/light.min.css"-->
-        <link rel="stylesheet" href="light.standalone.css">
+        <!--<link rel="stylesheet" href="light.standalone.css">-->
+        <link rel="stylesheet" href="water.css">
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
@@ -13,21 +14,53 @@
                 <legend>Input</legend>
                 <div class="grid-container">
                     <div class="psa-area">
-                        <label for="psa0">PSA<sub>0</sub></label>
+                        <!--Other parameters-->
+                        <label>PSA prior to prostatectomy, <em><b>PSA<sub>surg</sub></b></em></label>
+                        <input type="number" placeholder="ng/ml" required>
+                        
+                        <label>Time between prostatectomy and SRT, <em><b>T<sub>surgery-SRT</sub></b></em></label>
+                        <input type="number" placeholder="months" step="1" required>
+
+                        <label>Gleason score, <em><b>GS</b></em></label>
+                        <input type="number" placeholder="GS">
+
+                        <label>Surgical margins, <em><b>Surgmarg</b></em></label>
+                        <div>
+                            <input type="radio" name="surgmarg" required>
+                            <label>Positive</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="surgmarg" required>
+                            <label>Negative</label>
+                        </div>
+
+
+                        <label>Seminal vesicle invasion, <em><b>Semves</b></em></label>
+                        <div>
+                            <input type="radio" name="semves" required>
+                            <label>Yes</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="semves" required>
+                            <label>No</label>
+                        </div>
+
+                        <!--Calculating k-value-->
+                        <label for="psa0">PSA at start of SRT, <em><b>PSA<sub>0</sub></b></em></label>
                         <input name="psa0" type="number" step="0.01" placeholder="ng/ml" required>
-                        <label for="psa1">PSA<sub>1</sub></label>
+                        <label for="psa1">PSA week 1, <em><b>PSA<sub>1</sub></b></em></label>
                         <input name="psa1" type="number" step="0.01" placeholder="ng/ml" required>
-                        <label for="psa2">PSA<sub>2</sub></label>
+                        <label for="psa2">PSA week 2, <em><b>PSA<sub>2</sub></b></em></label>
                         <input name="psa2" type="number" step="0.01" placeholder="ng/ml" required>
-                        <label for="psa3">PSA<sub>3</sub></label>
+                        <label for="psa3">PSA week 3, <em><b>PSA<sub>3</sub></b></em></label>
                         <input name="psa3" type="number" step="0.01" placeholder="ng/ml" required>
-                        <label for="psa4">PSA<sub>4</sub></label>
-                        <input name="psa4" type="number" step="0.01" placeholder="ng/ml">
-                        <label for="psa5">PSA<sub>5</sub></label>
+                        <label for="psa4">PSA week 4, <em><b>PSA<sub>4</sub></b></em></label>
+                        <input name="psa4" type="number" step="0.01" placeholder="ng/ml" required>
+                        <label for="psa5">PSA week 5, <em><b>PSA<sub>5</sub></b></em></label>
                         <input name="psa5" type="number" step="0.01" placeholder="ng/ml">
-                        <label for="psa6">PSA<sub>6</sub></label>
+                        <label for="psa6">PSA week 6, <em><b>PSA<sub>6</sub></b></em></label>
                         <input name="psa6" type="number" step="0.01" placeholder="ng/ml">
-                        <label for="psa7">PSA<sub>7</sub></label>
+                        <label for="psa7">PSA week 7, <em><b>PSA<sub>7</sub></b></em></label>
                         <input name="psa7" type="number" step="0.01" placeholder="ng/ml">
                         <button type="submit">Calculate</button>
                         <button type="reset">Reset</button>
