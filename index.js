@@ -36,6 +36,16 @@ inputform.addEventListener('submit', (e) => {
     plot();
 });
 
+//Clear inputs when pressing reset
+const resetBtn = document.getElementById('reset-btn');
+resetBtn.addEventListener('click', () => {
+    for(let i = 0; i < 4; i++){
+        document.getElementById('p'+i).innerHTML = '';
+        document.getElementById('k'+i).innerHTML = '';
+    }
+    clearPlot();
+    plot();
+});
 
 
 
