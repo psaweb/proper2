@@ -19,36 +19,36 @@
                 <div class="grid-container">
                     <div>
                         <!--Other parameters-->
-                        <label>PSA prior to prostatectomy, <em><b>PSA<sub>surg</sub></b></em></label>
-                        <input type="number" placeholder="ng/ml" step="0.01" required>
+                        <label for="psa_surg">PSA prior to prostatectomy, <em><b>PSA<sub>surg</sub></b></em></label>
+                        <input name="psa_surg" type="number" placeholder="ng/ml" step="0.01" required>
                         
-                        <label>Time between prostatectomy and SRT, <em><b>T<sub>surgery-SRT</sub></b></em></label>
-                        <input type="number" placeholder="months" step="1" required>
+                        <label for="t_surg_srt">Time between prostatectomy and SRT, <em><b>T<sub>surgery-SRT</sub></b></em></label>
+                        <input name="t_surg_srt" type="number" placeholder="months" step="1" required>
 
-                        <label>Gleason score, <em><b>GS</b></em></label>
-                        <input type="number" placeholder="GS" step="1" required>
+                        <label for="gs">Gleason score, <em><b>GS</b></em></label>
+                        <input name="gs" type="number" placeholder="GS" step="1" required>
 
                     </div>
                     <div>
                         <div class="radio-btns">
-                            <label>Surgical margins, <em><b>Surgmarg</b></em></label>
+                            <label for="surgmarg">Surgical margins, <em><b>Surgmarg</b></em></label>
                             <div>
-                                <input type="radio" name="surgmarg" required>
+                                <input type="radio" name="surgmarg" required value="1">
                                 <label>Positive</label>
                             </div>
                             <div>
-                                <input type="radio" name="surgmarg" required>
+                                <input type="radio" name="surgmarg" required value="0">
                                 <label>Negative</label>
                             </div>
                         </div>
                         <div class="radio-btns">
-                            <label>Seminal vesicle invasion, <em><b>Semves</b></em></label>
+                            <label for="semves">Seminal vesicle invasion, <em><b>Semves</b></em></label>
                             <div>
-                                <input type="radio" name="semves" required>
+                                <input type="radio" name="semves" required value="1">
                                 <label>Yes</label>
                             </div>
                             <div>
-                                <input type="radio" name="semves" required>
+                                <input type="radio" name="semves" required value="0">
                                 <label>No</label>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                             <label for="psa3">PSA week 3, <em><b>PSA<sub>3</sub></b></em></label>
                             <input name="psa3" type="number" step="0.01" placeholder="ng/ml" required>
                             <label for="psa4">PSA week 4, <em><b>PSA<sub>4</sub></b></em></label>
-                            <input name="psa4" type="number" step="0.01" placeholder="ng/ml">
+                            <input name="psa4" type="number" step="0.01" placeholder="ng/ml" required>
                             <label for="psa5">PSA week 5, <em><b>PSA<sub>5</sub></b></em></label>
                             <input name="psa5" type="number" step="0.01" placeholder="ng/ml">
                             <label for="psa6">PSA week 6, <em><b>PSA<sub>6</sub></b></em></label>
@@ -86,7 +86,7 @@
                             <label for="date3">Date</label>
                             <input name="date3" type="date" required>
                             <label for="date4">Date</label>
-                            <input name="date4" type="date">
+                            <input name="date4" type="date" required>
                             <label for="date5">Date</label>
                             <input name="date5" type="date">
                             <label for="date6">Date</label>
@@ -101,12 +101,21 @@
             </fieldset>
             <fieldset>
                 <legend>Result</legend>
-                    <div class="result-area">
-                        <p><strong>k<sub>1w-3w</sub> : </strong><span id="k0"></span></p>
-                        <p><strong>k<sub>1w-4w</sub> : </strong><span id="k1"></span></p>
-                        <p><strong>k<sub>1w-5w</sub> : </strong><span id="k2"></span></p>
-                        <p><strong>k<sub>1w-6w</sub> : </strong><span id="k3"></span></p>
-                        <p><strong>k<sub>1w-7w</sub> : </strong><span id="k4"></span></p>
+                    <div class="grid-container">
+                        <div>
+                            <p>Risk for disease progression, <em><b>p</b></em></p>
+                            <p><strong>p<sub>1w-4w</sub> : </strong><span id="p0"></span></p>
+                            <p><strong>p<sub>1w-5w</sub> : </strong><span id="p1"></span></p>
+                            <p><strong>p<sub>1w-6w</sub> : </strong><span id="p2"></span></p>
+                            <p><strong>p<sub>1w-7w</sub> : </strong><span id="p3"></span></p>
+                        </div>
+                        <div>
+                            <p>PSA decay constant, <em><b>k</b></em></p>
+                            <p><strong>k<sub>1w-4w</sub> : </strong><span id="k0"></span></p>
+                            <p><strong>k<sub>1w-5w</sub> : </strong><span id="k1"></span></p>
+                            <p><strong>k<sub>1w-6w</sub> : </strong><span id="k2"></span></p>
+                            <p><strong>k<sub>1w-7w</sub> : </strong><span id="k3"></span></p>
+                        </div>
                     </div>
             </fieldset>
         </form>
