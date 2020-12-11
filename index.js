@@ -68,9 +68,23 @@ function readInput() {
 
     input['psa_surg'] = parseFloat(inputform.elements['psa_surg'].value);
     input['t_surg_srt'] = parseFloat(inputform.elements['t_surg_srt'].value);
-    input['gs'] = (parseInt(inputform.elements['gs'].value) >= 7) ? 1 : 0;
     input['surgmarg'] = parseInt(inputform.elements['surgmarg'].value);
     input['semves'] = parseInt(inputform.elements['semves'].value);
+
+
+    //Calculate gleason factor
+    let gs1 = parseInt(inputform.elements['gs_1'].value);
+    let gs2 = parseInt(inputform.elements['gs_2'].value);
+    let gs = 0;
+    if(gs1 >= 5 || gs2 >= 5){
+        gs = 1;
+    }else if(gs1 === 4){
+        gs = 1;
+    }else if (gs1 <= 3){
+        gs = 0;
+    }
+
+    input['gs'] = gs;
 
 
     return input;
