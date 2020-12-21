@@ -19,7 +19,6 @@ inputform.addEventListener('submit', (e) => {
     let input = readInput();
     //Process inputs
     let k = processInput(input.k);
-    console.log(k);
     //Calculate risk for disease progression
     let a = coefficients.intercept
         + coefficients.psa0 * Math.log(input.k[0].psa)
@@ -29,7 +28,7 @@ inputform.addEventListener('submit', (e) => {
         + coefficients.k * k[0];
 
     let p = 1.0/(1.0+Math.exp(-1*a))
-    document.getElementById('p0').innerHTML = p;
+    document.getElementById('p-res').innerHTML = p;
 
     plot();
 });
@@ -37,10 +36,8 @@ inputform.addEventListener('submit', (e) => {
 //Clear inputs when pressing reset
 const resetBtn = document.getElementById('reset-btn');
 resetBtn.addEventListener('click', () => {
-    for(let i = 0; i < 4; i++){
-        document.getElementById('p'+i).innerHTML = '';
-        document.getElementById('k'+i).innerHTML = '';
-    }
+    document.getElementById('p-res').innerHTML = '';
+    document.getElementById('k-res').innerHTML = '';
     clearPlot();
     plot();
 });
@@ -85,6 +82,9 @@ function readInput() {
 
     return input;
 }
+
+
+
 
 function processInput(input) {
     let x = [];
@@ -132,7 +132,6 @@ function processInput(input) {
     //Fill k-values
     for(let i = 0; i < k.length; i++){
         kweek.push(k[i][1]*7);
-        document.getElementById('k'+i).innerHTML = k[i][1] * 7;
 
         //Add new traces to plot
         traces.push({
@@ -142,6 +141,7 @@ function processInput(input) {
             name: 'k 1w-' + (i+4) + 'w' 
         });
     }
+    document.getElementById('k-res').innerHTML = kweek[0];
 
     return kweek;
     
