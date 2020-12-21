@@ -1,9 +1,11 @@
-const coefficients = [
-    [5.42598, -0.05617, 1.66260, -0.74308, 1.24751, -1.09327, 0.93849, -9.53067],
-    [5.67591, -0.05332, 1.79884, -0.70735, 1.02454, -1.08187, 0.87529, -10.93213],
-    [5.73586, -0.04867, 1.83412, -0.71618, 0.82945, -1.08720, 0.96894, -10.94723],
-    [5.64850, -0.04419, 1.84129, -0.69808, 0.80782, -1.08571, 1.10158, -11.61171]
-];
+const coefficients = {
+    intercept: 4.29036,
+    psa0: 1.481586,
+    t_surg_srt: -0.566218,
+    gs: 1.062178,
+    surgmarg: -1.149864,
+    k: -10.509373
+}
 
 const traces = [];
 
@@ -17,21 +19,17 @@ inputform.addEventListener('submit', (e) => {
     let input = readInput();
     //Process inputs
     let k = processInput(input.k);
+    console.log(k);
     //Calculate risk for disease progression
-    let p = [];
-    for(let i = 0; i < k.length; i++){
-        let a = coefficients[i][0]
-         + coefficients[i][1]*input['psa_surg']
-         + coefficients[i][2]*Math.log(input.k[0].psa)
-         + coefficients[i][3]*Math.log(input['t_surg_srt'])
-         + coefficients[i][4]*input['gs']
-         + coefficients[i][5]*input['surgmarg']
-         + coefficients[i][6]*input['semves']
-         + coefficients[i][7]*k[i];
-         p.push(1.0/(1.0+Math.exp(-1*a)));
-        //Fill in disease progression
-        document.getElementById('p'+i).innerHTML = p[i];
-    }
+    let a = coefficients.intercept
+        + coefficients.psa0 * Math.log(input.k[0].psa)
+        + coefficients.t_surg_srt * Math.log(input['t_surg_srt'])
+        + coefficients.gs * input['gs']
+        + coefficients.surgmarg * input['surgmarg']
+        + coefficients.k * k[0];
+
+    let p = 1.0/(1.0+Math.exp(-1*a))
+    document.getElementById('p0').innerHTML = p;
 
     plot();
 });
@@ -55,7 +53,7 @@ function readInput() {
         k: []
     };
     let startdate = 0;
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 5; i++) {
         let tempPSA = parseFloat(inputform.elements['psa' + i].value);
         let tempDate = Date.parse(inputform.elements['date' + i].value);
         if (isNaN(tempPSA) || isNaN(tempDate)) break;
@@ -66,10 +64,8 @@ function readInput() {
         });
     }
 
-    input['psa_surg'] = parseFloat(inputform.elements['psa_surg'].value);
     input['t_surg_srt'] = parseFloat(inputform.elements['t_surg_srt'].value);
     input['surgmarg'] = parseInt(inputform.elements['surgmarg'].value);
-    input['semves'] = parseInt(inputform.elements['semves'].value);
 
 
     //Calculate gleason factor
