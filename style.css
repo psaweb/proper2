@@ -1,0 +1,211 @@
+html {
+  background-image: url("images/PSA_testtubes.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position-x: calc(50% + 317px);
+  background-position-y: calc(100vh - 445px);
+  overflow-y: scroll;
+}
+
+
+
+body {
+  width: 1080px;
+  height: calc(100vh - 285px);
+  margin: 0 auto;
+  padding: 185px 0 100px 0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+header {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  height: 185px;
+  width: 1080px;
+  padding: 55px 130px 0 130px;
+  border-left: 1px solid #4392b5;
+  border-right: 1px solid #4392b5;
+  background-image: url("images/properlines.jpg");
+  background-repeat: no-repeat, repeat;
+  background-color: #fff;
+  Z-index:3;
+}
+
+header div {
+  display: flex;
+}
+
+header div nav {
+  position: relative;
+  height: 25px;
+  width: 25px;
+  margin-top: 15px;
+}
+
+header div nav ul {
+  display: none;
+}
+
+header div nav:hover ul {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  border: 1px solid #4392b5;
+  border-radius: 3px;
+  list-style: none;
+  background: #d4e2e9;
+}
+
+header div nav ul li {
+  border-bottom: 2px solid #4392b550;
+}
+
+header div nav ul li:last-of-type {
+  border-bottom: 0;
+}
+
+header div nav ul li a {
+  white-space: nowrap;
+  color: #000;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+header p {
+  margin: 10px 0 0 0;
+  font-size: 12px;
+}
+
+header p a {
+  font-weight: 600;
+  color: #4392b5;
+  text-decoration: none;
+}
+
+main {
+  min-height: calc(100vh - 265px);
+  box-sizing: border-box;
+  padding-bottom: 300px;
+  padding: 15px 130px 110px 130px;
+  overflow-y: auto;
+  border-left: 1px solid #4392b5;
+  border-right: 1px solid #4392b5;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  height: 80px;
+  width: 1080px;
+  padding: 0 130px;
+  border-left: 1px solid #4392b5;
+  border-right: 1px solid #4392b5;
+  background: #4392b5;
+  font-size: 15px;
+  Z-index:2;
+}
+
+footer ul li {
+  display: inline-block;
+  margin: 0 25px;
+}
+
+footer ul li a {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+h1 {
+  margin: 16px 0 5px 0px;
+  flex-grow: 1;
+  font-size: 23px;
+  font-weight: 600;
+}
+h1a {
+  margin: 33px 0 0 40px;
+  flex-grow: 1;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+h2 {
+  margin: 11px 0px 4px 0px;
+font-size: 19px;
+  font-weight: 600;
+}
+
+h3 {
+  margin: 8px 0px 2px 0px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+p {
+  font-size: 14px;
+font-weight: 400;
+}
+
+p2 {
+  font-size: 13px;
+font-weight: 300;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    margin: 0;
+    /* Set the hr color */
+    color: #4392b540; /* old IE */
+    background-color: #4392b540; /* Modern Browsers */
+}
+A {
+  font-weight: 600;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #d4e2e9;
+  color: #00;
+  text-align: left;
+  border-radius: 3px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left:30%;
+font-size: 12px;
+
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 8%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #d4e2e9 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

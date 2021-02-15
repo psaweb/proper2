@@ -1,96 +1,146 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>PROPER II study</title>
-        <link rel="stylesheet" href="water.css">
-        <link rel="stylesheet" href="index.css">
-    </head>
-    <body>
-        <h1>PROPER II study</h1>
-        <details>
-            <summary>About</summary>
-            <p>Some descriptive text</p>
-        </details>
-        <form id="inputform">
-            <fieldset>
-                <legend>Input</legend>
-                <div class="grid-container">
-                    <div>
-                        <!--Other parameters-->
-                        
-                        <label for="t_surg_srt">Time between prostatectomy and SRT, <em><b>T<sub>surgery-SRT</sub></b></em></label>
-                        <input name="t_surg_srt" type="number" placeholder="months" step="1" required>
+<html lang="en">
 
-                        <label for="gs_1">Gleason score 1, <em><b>GS<sub>1</sub></b></em></label>
-                        <input name="gs_1" type="number" placeholder="GS" step="1" required>
+<head>
+  <meta charset="UTF-8">
+  <title>Proper 2</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" />
+</head>
 
-                        <label for="gs_2">Gleason score 2, <em><b>GS<sub>2</sub></b></em></label>
-                        <input name="gs_2" type="number" placeholder="GS" step="1" required>
+<body>
+  <header>
+    <div>
+      <a href="index.html"><img src="images/proper2.svg" alt="" width="291" height="74" /></a>
+      <h1a>The PSA-Rec-Predicator</h1a>
+      <nav>
+        <img src="images/ham_nav.svg" alt="" />
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About the study</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p2>
+      This calculator is used to calculate the risk of a new prostate cancer
+      recurrence within three years to select patients for randomization
+      between receiving an addition of pelvic lymph node irradiation or not.
+      <a href="about.html">read more &raquo;</a>
+    </p2>
+    <hr>
+  </header>
+  <main>
 
-                    </div>
-                    <div>
-                        <div class="radio-btns">
-                            <label for="surgmarg">Surgical margins, <em><b>Surgmarg</b></em></label>
-                            <div>
-                                <input type="radio" name="surgmarg" required value="1">
-                                <label>Positive</label>
-                            </div>
-                            <div>
-                                <input type="radio" name="surgmarg" required value="0">
-                                <label>Negative</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <fieldset>
-                    <!--Calculating k-value-->
-                    <legend>PSA decay constant, <em>k</em></legend>
-                    <div class="grid-container">
-                        <div class="psa-area">
-                            <label for="psa0">PSA at start of SRT, <em><b>PSA<sub>0</sub></b></em></label>
-                            <input name="psa0" type="number" step="0.01" placeholder="ng/ml" required>
-                            <label for="psa1">PSA week 1, <em><b>PSA<sub>1</sub></b></em></label>
-                            <input name="psa1" type="number" step="0.01" placeholder="ng/ml" required>
-                            <label for="psa2">PSA week 2, <em><b>PSA<sub>2</sub></b></em></label>
-                            <input name="psa2" type="number" step="0.01" placeholder="ng/ml" required>
-                            <label for="psa3">PSA week 3, <em><b>PSA<sub>3</sub></b></em></label>
-                            <input name="psa3" type="number" step="0.01" placeholder="ng/ml" required>
-                            <label for="psa4">PSA week 4, <em><b>PSA<sub>4</sub></b></em></label>
-                            <input name="psa4" type="number" step="0.01" placeholder="ng/ml" required>
-                        </div>
-                        <div class="date-area">
-                            <label for="date0">Date</label>
-                            <input name="date0" type="date" required>
-                            <label for="date1">Date</label>
-                            <input name="date1" type="date" required>
-                            <label for="date2">Date</label>
-                            <input name="date2" type="date" required>
-                            <label for="date3">Date</label>
-                            <input name="date3" type="date" required>
-                            <label for="date4">Date</label>
-                            <input name="date4" type="date" required>
-                        </div>
-                    </div>
-                </fieldset>
-                    <button type="submit">Calculate</button>
-                    <button id="reset-btn" type="reset">Reset</button>
-            </fieldset>
-            <fieldset>
-                <legend>Result</legend>
-                    <div class="grid-container">
-                        <div>
-                            <p>Risk for disease progression, <em><b>p</b></em></p>
-                            <p><strong>p : </strong><span id="p-res"></span></p>
-                        </div>
-                        <div>
-                            <p>PSA decay constant, <em><b>k</b></em></p>
-                            <p><strong>k<sub>1w-4w</sub> : </strong><span id="k-res"></span></p>
-                        </div>
-                    </div>
-            </fieldset>
-        </form>
-        <div id="plotarea"></div>
-    </body>
-    <script src="plotly-latest.min.js"></script>
-    <script src="index.js"></script>
+    <!-- Form -->
+    <div>
+      <form>
+        <fieldset>
+          <legend>Input</legend>
+          <!-- Data -->
+          <div>
+            <label for="t_surg_srt">Time between prostatectomy and SRT, <em><b>T<sub>surgery-SRT</sub></b></em></label>
+            <input name="t_surg_srt" type="number" placeholder="months" step="1" required>
+          
+            <label for="gs_1">Gleason score 1, <em><b>GS<sub>1</sub></b></em></label>
+            <input name="gs_1" type="number" placeholder="GS" step="1" required>
+          
+            <label for="gs_2">Gleason score 2, <em><b>GS<sub>2</sub></b></em></label>
+            <input name="gs_2" type="number" placeholder="GS" step="1" required>
+          </div>
+          <div>
+
+          </div>
+        </fieldset>
+      </form>
+    </div>
+
+
+    <p>Lorem ipsum dolor sit amet,
+    <h1>Huvudrubrik</h1>
+    <p> Här ska formuläret in med själva studien. Glöm inte att anpassa namnen på dina CSS-klasser så att de inte
+      krockar med ordinarie klasser på sajten. Vi har inte använt dag/natt funktion på sidan i o m att grafiken bara är
+      anpassad för dagtid. Nedan&nbsp; har du också ett exempel på onmouseover funktionen till formulärets
+      inmatningsfält (texter till fälten är bifogade i separat word-fil från Adalsteinn.) .<br>
+    </p>
+    <p>&nbsp;&nbsp; &nbsp; &nbsp;<br>
+      <strong>Example of the help function for the form fields in the Proper2 form</strong> <span class="tooltip"><img
+          src="images/icon_q.svg" width="15" height="15"> <span class="tooltiptext">Tooltip text text text text text
+          text text text text texttext text text text text text text text text text</span></span> <br>
+      <br>
+    </p>
+    <p> Facilisis
+      ut nisl ac, aliquam euismod felis. Nulla elementum ante ut varius
+      sagittis. In hac habitasse platea dictumst. Fusce eget velit nec ligula
+      bibendum rutrum. In ac justo et leo tempor rutrum. </p>
+    <h2>Underrubrik 2</h2>
+    Integer elit risus, mattis eget
+    dignissim eu, porta quis turpis. Nulla sodales, ex quis ornare dapibus,
+    metus tellus tristique nulla, in gravida mi mi id arcu. Morbi enim ligula,
+    convallis faucibus placerat vitae, aliquet eget velit.
+    eget.
+    <h3>Underrubrik 3</h3>Mauris eleifend nisi vel arcu tempus, eget convallis sapien
+    ultricies. Fusce odio nibh, suscipit vel lacus vitae, eleifend rutrum
+    ante. Aliquam erat volutpat. Nunc luctus nec leo.
+    <h3>Underrubrik 3</h3>Integer nec ligula
+    leo. Cras odio quam, eleifend vel gravida at, tristique nec risus. Donec
+    ornare elementum egestas.
+    <h3>Underrubrik 3</h3>Morbi aliquet, ex ac scelerisque elementum,
+    lorem erat fermentum dui, sed fermentum metus ex ut dui. Nulla dui turpis,
+    congue non neque eget, finibus fringilla metus.
+    <h2>Underrubrik 2</h2>Integer imperdiet ipsum
+    eget lectus congue, sed lobortis elit aliquet. Integer porta varius quam,
+    ac rhoncus ex luctus varius. Duis pharetra, enim sed tincidunt tempus,
+    neck mauris interdum tortor, ac ornare mi nisl ac mi. Sed non felis nec
+    arcu convallis suscipit. Pellentesque accumsan vel ipsum ut posuere. Duis
+    auctor lacus vel placerat sollicitudin. Morbi placerat tristique
+    velit vitae placerat. Vivamus sit amet malesuada augue.
+    <h3>Underrubrik 3</h3>Praesent auctor
+    massa quis urna finibus, in ornare ante consectetur. Sed sit amet quam nec
+    nunc condimentum imperdiet. Phasellus ullamcorper condimentum
+    aliquet.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+    sed odio maximus, efficitur ante vel, imperdiet augue. Suspendisse mi
+    ligula, interdum vel egestas at, rhoncus ac nibh. Quisque gravida metus
+    eget justo tempor, ut consectetur urna tincidunt. Vestibulum ipsum turpis,
+    facilisis ut nisl ac, aliquam euismod felis. Nulla elementum ante ut
+    varius sagittis. In hac habitasse platea dictumst. Fusce eget velit nec
+    ligula bibendum rutrum. In ac justo et leo tempor rutrum. Morbi interdum
+    elementum diam sed malesuada. Suspendisse dapibus consequat ultricies.
+    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
+    cubilia curae; Ut magna nisl, feugiat sed egestas ac, pretium ut ligula.
+    Maecenas feugiat in justo id viverra. Fusce ac vestibulum enim, at
+    molestie nunc. Curabitur eget ullamcorper erat. Sed nibh urna, tincidunt
+    in nisi imperdiet, viverra volutpat quam. Integer elit risus, mattis eget
+    dignissim eu, porta quis turpis. Nulla sodales, ex quis ornare dapibus,
+    metus tellus tristique nulla, in gravida mi mi id arcu. Morbi enim ligula,
+    convallis faucibus placerat vitae, aliquet eget velit. Duis in euismod
+    orci. Suspendisse viverra tortor urna, sit amet viverra urna fermentum. In ac justo et leo tempor rutrum. Morbi
+    interdum
+    elementum diam sed malesuada. Suspendisse dapibus consequat ultricies.
+    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
+    cubilia curae; Ut magna nisl, feugiat sed egestas ac, pretium ut ligula.
+    Maecenas feugiat in justo id viverra. Fusce ac vestibulum enim, at
+    molestie nunc. Curabitur eget ullamcorper erat. Sed nibh urna, tincidunt
+    in nisi imperdiet, viverra volutpat quam. Integer elit risus, mattis eget
+    dignissim eu, porta quis turpis. Nulla sodales, ex quis ornare dapibus,
+    metus tellus tristique nulla, in gravida mi mi id arcu. Morbi enim ligula,
+    convallis faucibus placerat vitae, aliquet eget velit. Duis in euismod
+    orci. Suspendisse viverra tortor urna, sit amet viverra urna fermentum.</p>
+  </main>
+  <footer>
+    <a href="index.html"><img src="images/Proper2_small_white.svg" alt="" width="116" height="30" />
+    </a>
+    <ul>
+      <li><a href="about.html">About the study</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </footer>
+</body>
+
 </html>

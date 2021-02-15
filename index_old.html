@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PROPER II study</title>
+        <link rel="stylesheet" href="water.css">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <h1>PROPER II study</h1>
+        <details>
+            <summary>About</summary>
+            <p>Some descriptive text</p>
+        </details>
+        <form id="inputform">
+            <fieldset>
+                <legend>Input</legend>
+                <div class="grid-container">
+                    <div>
+                        <!--Other parameters-->
+                        
+                        <label for="t_surg_srt">Time between prostatectomy and SRT, <em><b>T<sub>surgery-SRT</sub></b></em></label>
+                        <input name="t_surg_srt" type="number" placeholder="months" step="1" required>
+
+                        <label for="gs_1">Gleason score 1, <em><b>GS<sub>1</sub></b></em></label>
+                        <input name="gs_1" type="number" placeholder="GS" step="1" required>
+
+                        <label for="gs_2">Gleason score 2, <em><b>GS<sub>2</sub></b></em></label>
+                        <input name="gs_2" type="number" placeholder="GS" step="1" required>
+
+                    </div>
+                    <div>
+                        <div class="radio-btns">
+                            <label for="surgmarg">Surgical margins, <em><b>Surgmarg</b></em></label>
+                            <div>
+                                <input type="radio" name="surgmarg" required value="1">
+                                <label>Positive</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="surgmarg" required value="0">
+                                <label>Negative</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <fieldset>
+                    <!--Calculating k-value-->
+                    <legend>PSA decay constant, <em>k</em></legend>
+                    <div class="grid-container">
+                        <div class="psa-area">
+                            <label for="psa0">PSA at start of SRT, <em><b>PSA<sub>0</sub></b></em></label>
+                            <input name="psa0" type="number" step="0.01" placeholder="ng/ml" required>
+                            <label for="psa1">PSA week 1, <em><b>PSA<sub>1</sub></b></em></label>
+                            <input name="psa1" type="number" step="0.01" placeholder="ng/ml" required>
+                            <label for="psa2">PSA week 2, <em><b>PSA<sub>2</sub></b></em></label>
+                            <input name="psa2" type="number" step="0.01" placeholder="ng/ml" required>
+                            <label for="psa3">PSA week 3, <em><b>PSA<sub>3</sub></b></em></label>
+                            <input name="psa3" type="number" step="0.01" placeholder="ng/ml" required>
+                            <label for="psa4">PSA week 4, <em><b>PSA<sub>4</sub></b></em></label>
+                            <input name="psa4" type="number" step="0.01" placeholder="ng/ml" required>
+                        </div>
+                        <div class="date-area">
+                            <label for="date0">Date</label>
+                            <input name="date0" type="date" required>
+                            <label for="date1">Date</label>
+                            <input name="date1" type="date" required>
+                            <label for="date2">Date</label>
+                            <input name="date2" type="date" required>
+                            <label for="date3">Date</label>
+                            <input name="date3" type="date" required>
+                            <label for="date4">Date</label>
+                            <input name="date4" type="date" required>
+                        </div>
+                    </div>
+                </fieldset>
+                    <button type="submit">Calculate</button>
+                    <button id="reset-btn" type="reset">Reset</button>
+            </fieldset>
+            <fieldset>
+                <legend>Result</legend>
+                    <div class="grid-container">
+                        <div>
+                            <p>Risk for disease progression, <em><b>p</b></em></p>
+                            <p><strong>p : </strong><span id="p-res"></span></p>
+                        </div>
+                        <div>
+                            <p>PSA decay constant, <em><b>k</b></em></p>
+                            <p><strong>k<sub>1w-4w</sub> : </strong><span id="k-res"></span></p>
+                        </div>
+                    </div>
+            </fieldset>
+        </form>
+        <div id="plotarea"></div>
+    </body>
+    <script src="plotly-latest.min.js"></script>
+    <script src="index.js"></script>
+</html>
