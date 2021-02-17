@@ -123,10 +123,10 @@ function processInput(input) {
     }
 
     //Clear k values
-    let spans = document.getElementsByTagName('span');
+    /*let spans = document.getElementsByTagName('span');
     for(let i = 0; i < spans.length; i++){
         spans[i].innerHTML = '';
-    }
+    }*/
 
     let kweek = [];
     //Fill k-values

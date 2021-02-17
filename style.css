@@ -183,7 +183,7 @@ A {
   visibility: hidden;
   width: 120px;
   background-color: #d4e2e9;
-  color: #00;
+  color: #000000;
   text-align: left;
   border-radius: 3px;
   padding: 10px;
@@ -208,4 +208,88 @@ font-size: 12px;
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+
+/*Added Classes*/
+
+
+label {
+  display: inline-block;
+}
+
+fieldset {
+  border-radius: 4px;
+  border-color: #4392b5;
+}
+
+legend {
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  font-size: 19px;
+  font-weight: 600;
+  padding-inline-start: 2px;
+}
+
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 2px solid #4392b5;
+}
+
+.separator:not(:empty)::after {
+  margin-left: 2px;
+}
+
+form hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+button{
+  font-family: 'Open Sans', sans-serif;
+  border-radius: 4px;
+  margin-right: 6px;
+  margin-bottom: 6px;
+  padding: 10px;
+  border: none;
+  background-color: #d4e2e9;
+  padding-right: 30px;
+  padding-left: 30px;
+  outline: none;
+}
+
+input:not([type='checkbox']):not([type='radio']){
+  display: block;
+  background-color: #efefef;
+  margin-right: 6px;
+  margin-bottom: 6px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  font-family: 'Open Sans', sans-serif;
+  min-width: 200px;
+}
+
+button, input[type='radio']{
+  cursor: pointer;
+}
+
+button:active, input[type='radio']:active{
+  transform: translateY(2px);
+}
+
+button:focus, input:focus {
+  box-shadow: 0 0 0 2px #4392b5;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
