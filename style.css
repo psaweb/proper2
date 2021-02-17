@@ -191,7 +191,7 @@ A {
   z-index: 1;
   bottom: 150%;
   left:30%;
-font-size: 12px;
+  font-size: 12px;
 
 }
 
@@ -207,6 +207,38 @@ font-size: 12px;
 }
 
 .tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+/*Tooltip down*/
+.tooltip .tooltiptextdown {
+  visibility: hidden;
+  width: 120px;
+  background-color: #d4e2e9;
+  color: #000000;
+  text-align: left;
+  border-radius: 3px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left:30%;
+  font-size: 12px;
+
+}
+
+.tooltip .tooltiptextdown::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 8%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #d4e2e9 transparent;
+}
+
+.tooltip:hover .tooltiptextdown {
   visibility: visible;
 }
 
