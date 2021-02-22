@@ -26,6 +26,14 @@ inputform.addEventListener('submit', (e) => {
         return;
     }
 
+    // Check that all dates for PSA is after each other
+    for(let i = 1; i < input.k.length; i++){
+        if(input.k[i].date <= input.k[i-1].date){
+            alert(`Date for PSA${i} can't be before date for PSA${i-1}`);
+            return;
+        }
+    }
+
 
     //Process inputs
     let k = processInput(input.k);
