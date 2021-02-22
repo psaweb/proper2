@@ -67,12 +67,19 @@ function readInput() {
         let tempDate = Date.parse(inputform.elements['date' + i].value);
         if (!isNaN(tempPSA) && !isNaN(tempDate)){
             if(i === 0) startdate = tempDate;
+            // If PSA is under measurable limit change to 0.05 in model
+            if(tempPSA < 0.1) tempPSA = 0.05;
             input.k.push({
                 psa: tempPSA,
                 date: (tempDate - startdate)/(24*60*60*1000) //Divide by ms in 1 day to get days between dates
             });
         }
     }
+
+    //If both PSA3 and PSA4 is unmeasureable remove PSA4
+    if(input.k.length === 5 && input.k[3].psa === 0.05 && input.k[4].psa === 0.05){
+        input.k.pop();
+    } 
 
     input['t_surg_srt'] = parseFloat(inputform.elements['t_surg_srt'].value);
     input['surgmarg'] = parseInt(inputform.elements['surgmarg'].value);
