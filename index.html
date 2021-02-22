@@ -53,7 +53,7 @@
                   </span>
                 </span>
               </label>
-              <input name="t_surg_srt" type="number" placeholder="Months" step="1" required>
+              <input name="t_surg_srt" type="number" placeholder="Months" step="0.1" required>
             
               <label for="gs_1">Gleason score 1, <em><b>GS<sub>1</sub></b></em>
                 <span class="tooltip"><img src="images/icon_q.svg" width="15" height="15">
@@ -113,7 +113,7 @@
                   </span>
                 </span>
               </label>
-              <input name="psa0" type="number" step="0.01" placeholder="ng/ml" required>
+              <input name="psa0" type="number" min="0.20" max="0.70" step="0.01" placeholder="ng/ml" required>
 
               <label for="psa1">PSA week 1, <em><b>PSA<sub>1</sub></b></em>
                 <span class="tooltip"><img src="images/icon_q.svg" width="15" height="15">
@@ -122,7 +122,7 @@
                   </span>
                 </span>
               </label>
-              <input name="psa1" type="number" step="0.01" placeholder="ng/ml" required>
+              <input name="psa1" type="number" min="0" max="1" step="0.01" placeholder="ng/ml" required>
 
               <label for="psa2">PSA week 2, <em><b>PSA<sub>2</sub></b></em>
                 <span class="tooltip"><img src="images/icon_q.svg" width="15" height="15">
@@ -131,7 +131,7 @@
                   </span>
                 </span>
               </label>
-              <input name="psa2" type="number" step="0.01" placeholder="ng/ml">
+              <input name="psa2" type="number" min="0" max="1" step="0.01" placeholder="ng/ml">
 
               <label for="psa3">PSA week 3, <em><b>PSA<sub>3</sub></b></em>
                 <span class="tooltip"><img src="images/icon_q.svg" width="15" height="15">
@@ -140,7 +140,7 @@
                   </span>
                 </span>
               </label>
-              <input name="psa3" type="number" step="0.01" placeholder="ng/ml">
+              <input name="psa3" type="number" min="0" max="1" step="0.01" placeholder="ng/ml">
 
               <label for="psa4">PSA week 4, <em><b>PSA<sub>4</sub></b></em>
                 <span class="tooltip"><img src="images/icon_q.svg" width="15" height="15">
@@ -149,7 +149,7 @@
                   </span>
                 </span>
               </label>
-              <input name="psa4" type="number" step="0.01" placeholder="ng/ml" required>
+              <input name="psa4" type="number" min="0" max="1" step="0.01" placeholder="ng/ml" required>
             </div>
 
             <!--Date input column-->
