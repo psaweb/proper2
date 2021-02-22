@@ -54,6 +54,12 @@ function resetResult() {
     plot();
 }
 
+//Print button
+
+const printBtn = document.getElementById('print-btn');
+printBtn.addEventListener('click', () => {
+    window.print();
+});
 
 
 function readInput() {

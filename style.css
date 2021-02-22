@@ -325,3 +325,27 @@ button:focus, input:focus {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
+#print-btn {
+  margin-top: 10px;
+  float: right;
+}
+
+
+@media print {
+  header, footer, .tooltip {
+    display: none;
+  }
+  html {
+    background-image: none;
+  }
+
+  main {
+    border: none;
+  }
+
+  body {
+    padding: 0;
+  }
+
+}
