@@ -14,9 +14,19 @@ let inputform = document.getElementById('inputform');
 inputform.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    clearPlot();
+    resetResult();
     //Read inputs
     let input = readInput();
+    console.log(input);
+
+    //Check input
+    //At least one of PSA2 or PSA3 must be selected
+    if(input.k.length <= 3){
+        alert('At least one of PSA2 or PSA3 must be filled.');
+        return;
+    }
+
+
     //Process inputs
     let k = processInput(input.k);
     //Calculate risk for disease progression
@@ -25,7 +35,7 @@ inputform.addEventListener('submit', (e) => {
         + coefficients.t_surg_srt * Math.log(input['t_surg_srt'])
         + coefficients.gs * input['gs']
         + coefficients.surgmarg * input['surgmarg']
-        + coefficients.k * k[0];
+        + coefficients.k * k;
 
     let p = 1.0/(1.0+Math.exp(-1*a))
     document.getElementById('p-res').innerHTML = p;
@@ -35,12 +45,14 @@ inputform.addEventListener('submit', (e) => {
 
 //Clear inputs when pressing reset
 const resetBtn = document.getElementById('reset-btn');
-resetBtn.addEventListener('click', () => {
+resetBtn.addEventListener('click', resetResult);
+
+function resetResult() {
     document.getElementById('p-res').innerHTML = '';
     document.getElementById('k-res').innerHTML = '';
     clearPlot();
     plot();
-});
+}
 
 
 
@@ -53,12 +65,13 @@ function readInput() {
     for (let i = 0; i < 5; i++) {
         let tempPSA = parseFloat(inputform.elements['psa' + i].value);
         let tempDate = Date.parse(inputform.elements['date' + i].value);
-        if (isNaN(tempPSA) || isNaN(tempDate)) break;
-        if(i === 0) startdate = tempDate;
-        input.k.push({
-            psa: tempPSA,
-            date: (tempDate - startdate)/(24*60*60*1000) //Divide by ms in 1 day to get days between dates
-        });
+        if (!isNaN(tempPSA) && !isNaN(tempDate)){
+            if(i === 0) startdate = tempDate;
+            input.k.push({
+                psa: tempPSA,
+                date: (tempDate - startdate)/(24*60*60*1000) //Divide by ms in 1 day to get days between dates
+            });
+        }
     }
 
     input['t_surg_srt'] = parseFloat(inputform.elements['t_surg_srt'].value);
@@ -90,15 +103,12 @@ function processInput(input) {
     let x = [];
     let y = [];
     let lny = [];
-    let k = [];
     for(let i = 1; i < input.length; i++) {
         x.push(input[i].date);
         y.push(input[i].psa);
         lny.push(-1 * Math.log(input[i].psa));
-        if(i >= 4){
-            k.push(linearfit(x, lny));
-        }
     }
+    let k = linearfit(x, lny);
 
     //Add PSA0 to plot
     traces.push({
@@ -122,26 +132,17 @@ function processInput(input) {
         xexp.push(i);
     }
 
-    //Clear k values
-    /*let spans = document.getElementsByTagName('span');
-    for(let i = 0; i < spans.length; i++){
-        spans[i].innerHTML = '';
-    }*/
-
-    let kweek = [];
+    // Convert units on k from days^-1 to week^-1
+    let kweek = k[1]*7;
+    //Add new traces to plot
+    traces.push({
+        x: xexp,
+        y: xexp.map(x => Math.exp(-k[0]) * Math.exp(-k[1] * x)),
+        mode: 'lines',
+        name: 'k 1w-4w' 
+    });
     //Fill k-values
-    for(let i = 0; i < k.length; i++){
-        kweek.push(k[i][1]*7);
-
-        //Add new traces to plot
-        traces.push({
-            x: xexp,
-            y: xexp.map(x => Math.exp(-k[i][0]) * Math.exp(-k[i][1] * x)),
-            mode: 'lines',
-            name: 'k 1w-' + (i+4) + 'w' 
-        });
-    }
-    document.getElementById('k-res').innerHTML = kweek[0];
+    document.getElementById('k-res').innerHTML = kweek;
 
     return kweek;
     
