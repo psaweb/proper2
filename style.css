@@ -331,7 +331,12 @@ button:focus, input:focus {
   float: right;
 }
 
+#version {
+  text-align: right;
+  margin: 5px;
+}
 
+/*Print settings*/
 @media print {
   header, footer, .tooltip {
     display: none;
