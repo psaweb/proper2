@@ -1,10 +1,10 @@
 const coefficients = {
-    intercept: 4.29036,
-    psa0: 1.481586,
-    t_surg_srt: -0.566218,
-    gs: 1.062178,
-    surgmarg: -1.149864,
-    k: -10.509373
+    intercept: 3.85226,
+    psa0: 1.20913,
+    t_surg_srt: -0.58121,
+    gs: 1.02538,
+    surgmarg: -1.01473,
+    k: -8.91896
 }
 
 const traces = [];
