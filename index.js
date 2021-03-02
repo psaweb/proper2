@@ -20,6 +20,15 @@ inputform.addEventListener('submit', (e) => {
     console.log(input);
 
     //Check input
+
+    //Check that Date of SRT is after prostatectomy
+    let date_surg = Date.parse(inputform.elements['date_surg'].value);
+    let date_srt = Date.parse(inputform.elements['date_srt'].value);
+    if(date_srt < date_surg){
+        alert('Date for SRT can\'t be before date for prostatectomy');
+        return;
+    }
+
     //At least one of PSA2 or PSA3 must be selected
     if(input.k.length <= 3){
         alert('At least one of PSA2 or PSA3 must be filled.');
@@ -53,6 +62,24 @@ inputform.addEventListener('submit', (e) => {
 
     plot();
 });
+
+
+//Listen for input in date of prostatectomy
+const inputDateSurg = document.getElementById('date_surg');
+const inputDateSRT = document.getElementById('date_srt');
+const inputTimeSurgSRT = document.getElementById('t_surg_srt');
+
+inputDateSurg.addEventListener('input', updateTimeSurgSRT)
+inputDateSRT.addEventListener('input', updateTimeSurgSRT)
+
+function updateTimeSurgSRT() {
+    if(inputDateSurg.value && inputDateSRT.value 
+        && inputDateSurg.value < inputDateSRT.value){
+            let tdiff = (Date.parse(inputDateSRT.value) - Date.parse(inputDateSurg.value)) / (24*60*60*1000); //Divide by ms in 1 day to get days between dates
+            let tdiffMonth = tdiff / 365.25 * 12; 
+            inputTimeSurgSRT.value = tdiffMonth.toFixed(0);
+    }
+}
 
 //Clear inputs when pressing reset
 const resetBtn = document.getElementById('reset-btn');
@@ -97,6 +124,7 @@ function readInput() {
     if(input.k.length === 5 && input.k[3].psa === 0.05 && input.k[4].psa === 0.05){
         input.k.pop();
     } 
+
 
     input['t_surg_srt'] = parseFloat(inputform.elements['t_surg_srt'].value);
     input['surgmarg'] = parseInt(inputform.elements['surgmarg'].value);

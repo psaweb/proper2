@@ -45,16 +45,26 @@
           <!-- Data -->
           <div class="columns">
             <div>
-              <label for="t_surg_srt">
-                Time between prostatectomy and SRT, <em><b>T<sub>surgery-SRT</sub></b></em>
+              <label for="date_surg">
+                Date of prostatectomy
                 <span class="tooltip"><img src="images/icon_q.svg" width="15" height="15">
                   <span class="tooltiptextdown">
                     Insert date of prostatectomy
                   </span>
                 </span>
               </label>
-              <input name="t_surg_srt" type="number" placeholder="Months" step="0.1" required>
-            
+              <input id="date_surg" name="date_surg" type="date" required>
+
+              <label for="date_srt">
+                Date of SRT
+                <span class="tooltip"><img src="images/icon_q.svg" width="15" height="15">
+                  <span class="tooltiptext">
+                    Insert date of start of salvage radiotherapy
+                  </span>
+                </span>
+              </label>
+              <input id="date_srt" name="date_srt" type="date" required>
+
               <label for="gs_1">Gleason score 1, <em><b>GS<sub>1</sub></b></em>
                 <span class="tooltip"><img src="images/icon_q.svg" width="15" height="15">
                   <span class="tooltiptext">
@@ -75,6 +85,19 @@
             </div>
 
             <div>
+              <label for="t_surg_srt">
+                Time between prostatectomy and SRT, <em><b>T<sub>surgery-SRT</sub></b></em>
+                <!--<span class="tooltip"><img src="images/icon_q.svg" width="15" height="15">
+                  <span class="tooltiptextdown">
+                    Insert date of prostatectomy
+                  </span>
+                </span>-->
+              </label>
+              <input id="t_surg_srt" name="t_surg_srt" type="number" placeholder="Months" disabled step="1" required>
+
+              <div class="input_spacer"></div>
+
+
               <label for="surgmarg">Surgical margins, <em><b>Surgmarg</b></em>
                 <span class="tooltip"><img src="images/icon_q.svg" width="15" height="15">
                   <span class="tooltiptextdown">

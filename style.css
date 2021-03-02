@@ -313,6 +313,10 @@ button, input[type='radio']{
   cursor: pointer;
 }
 
+input:disabled {
+  cursor: not-allowed;
+}
+
 button:active, input[type='radio']:active{
   transform: translateY(2px);
 }
@@ -324,6 +328,10 @@ button:focus, input:focus {
 .columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+.input_spacer {
+  height: 65px;
 }
 
 #print-btn {
