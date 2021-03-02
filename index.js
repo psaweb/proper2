@@ -29,7 +29,7 @@ inputform.addEventListener('submit', (e) => {
     // Check that all dates for PSA is after each other
     for(let i = 1; i < input.k.length; i++){
         if(input.k[i].date <= input.k[i-1].date){
-            alert(`Date for PSA${i} can't be before date for PSA${i-1}`);
+            alert(`Date for PSA${i+1} can't be before date for PSA${i}`);
             return;
         }
     }
@@ -46,7 +46,10 @@ inputform.addEventListener('submit', (e) => {
         + coefficients.k * k;
 
     let p = 1.0/(1.0+Math.exp(-1*a))
-    document.getElementById('p-res').innerHTML = p;
+    //Fill P
+    document.getElementById('p-res').innerHTML = `${(p * 100).toFixed(0)} %`;
+    //Fill k-values
+    document.getElementById('k-res').innerHTML = `${k.toFixed(3)} wk<sup>-1</sup`;
 
     plot();
 });
@@ -162,8 +165,6 @@ function processInput(input) {
         mode: 'lines',
         name: 'k 1w-4w' 
     });
-    //Fill k-values
-    document.getElementById('k-res').innerHTML = kweek;
 
     return kweek;
     
