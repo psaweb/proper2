@@ -308,6 +308,14 @@ input:not([type='checkbox']):not([type='radio']){
   min-width: 200px;
 }
 
+input:disabled {
+  cursor: not-allowed;
+}
+
+#t_surg_srt {
+  background-color: #fff;
+}
+
 .radio-container {
   background-color: #efefef;
   width: fit-content;
@@ -320,9 +328,6 @@ button, input[type='radio']{
   cursor: pointer;
 }
 
-input:disabled {
-  cursor: not-allowed;
-}
 
 button:active, input[type='radio']:active{
   transform: translateY(2px);
