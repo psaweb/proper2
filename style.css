@@ -88,7 +88,7 @@ header p a {
 }
 
 main {
-  min-height: calc(100vh - 265px);
+  min-height: calc(100vh - 50px);
   box-sizing: border-box;
   padding-bottom: 300px;
   padding: 15px 130px 110px 130px;
