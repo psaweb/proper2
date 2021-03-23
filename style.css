@@ -357,9 +357,26 @@ button:focus, input:focus {
   margin: 5px;
 }
 
+#patient-study-id {
+  padding-top: 10px;
+  flex-grow: 4;
+
+}
+
 /*Print settings*/
 @media print {
-  header, footer, .tooltip {
+
+  header {
+    position: relative;
+    border: none;
+    height: fit-content;
+    height: -moz-fit-content;
+  }
+  header p2, header nav {
+    display: none;
+  }
+
+  footer, .tooltip {
     display: none;
   }
   html {
@@ -372,6 +389,10 @@ button:focus, input:focus {
 
   body {
     padding: 0;
+  }
+
+  button {
+    display: none;
   }
 
 }
