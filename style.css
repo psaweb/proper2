@@ -308,6 +308,14 @@ input:not([type='checkbox']):not([type='radio']){
   min-width: 200px;
 }
 
+.radio-container {
+  background-color: #efefef;
+  width: fit-content;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+}
+
 button, input[type='radio']{
   cursor: pointer;
 }
