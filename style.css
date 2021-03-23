@@ -319,6 +319,7 @@ input:disabled {
 .radio-container {
   background-color: #efefef;
   width: fit-content;
+  width: -moz-fit-content;
   padding: 10px;
   border: none;
   border-radius: 4px;
