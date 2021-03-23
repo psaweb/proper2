@@ -58,7 +58,7 @@ inputform.addEventListener('submit', (e) => {
     //Fill P
     document.getElementById('p-res').innerHTML = `${(p * 100).toFixed(0)} %`;
     //Fill k-values
-    document.getElementById('k-res').innerHTML = `${k.toFixed(3)} wk<sup>-1</sup`;
+    document.getElementById('k-res').innerHTML = `${k.toFixed(3)} week<sup>-1</sup`;
 
     plot();
 });
@@ -191,7 +191,7 @@ function processInput(input) {
         x: xexp,
         y: xexp.map(x => Math.exp(-k[0]) * Math.exp(-k[1] * x)),
         mode: 'lines',
-        name: 'k 1w-4w' 
+        name: 'k<sub>PSA</sub>' 
     });
 
     return kweek;

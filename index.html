@@ -116,7 +116,7 @@
           </div>
 
           <!--Decay constant input-->
-          <div class="separator">PSA decay constant,<em>&nbsp;k</em> &nbsp; 
+          <div class="separator">PSA decay constant,<em>&nbsp;k<sub>PSA</sub></em> &nbsp; 
             <span class="tooltip"><img src="images/icon_q.svg" width="15" height="15">
               <span class="tooltiptext">
                 The PSA decay-rate constant (k) reflects the decay of the PSA curve during SRT and is calculated by using linear regression of ln(PSA) vs time assuming first order kinetics.  
@@ -128,7 +128,7 @@
 
             <!--PSA input column-->
             <div>
-              <label for="psa0">PSA at start of SRT, <em><b>PSA<sub>1</sub></b></em>
+              <label for="psa0">PSA at start of SRT (week 1), <em><b>PSA<sub>1</sub></b></em>
                 <span class="tooltip"><img src="images/icon_q.svg" width="15" height="15">
                   <span class="tooltiptext">
                     Insert PSA value at the start of SRT in ng/ml.  
@@ -137,7 +137,7 @@
               </label>
               <input name="psa0" type="number" min="0.20" max="0.69" step="0.01" placeholder="ng/ml" required>
 
-              <label for="psa1">PSA week 1, <em><b>PSA<sub>2</sub></b></em>
+              <label for="psa1">PSA week 2, <em><b>PSA<sub>2</sub></b></em>
                 <span class="tooltip"><img src="images/icon_q.svg" width="15" height="15">
                   <span class="tooltiptext">
                     Insert PSA value from the first week of SRT in ng/ml.
@@ -146,7 +146,7 @@
               </label>
               <input name="psa1" type="number" min="0" max="3" step="0.01" placeholder="ng/ml" required>
 
-              <label for="psa2">PSA week 2, <em><b>PSA<sub>3</sub></b></em>
+              <label for="psa2">PSA week 3, <em><b>PSA<sub>3</sub></b></em>
                 <span class="tooltip"><img src="images/icon_q.svg" width="15" height="15">
                   <span class="tooltiptext">
                     Insert PSA value from the second week of SRT in ng/ml.
@@ -155,7 +155,7 @@
               </label>
               <input name="psa2" type="number" min="0" max="3" step="0.01" placeholder="ng/ml">
 
-              <label for="psa3">PSA week 3, <em><b>PSA<sub>4</sub></b></em>
+              <label for="psa3">PSA week 4, <em><b>PSA<sub>4</sub></b></em>
                 <span class="tooltip"><img src="images/icon_q.svg" width="15" height="15">
                   <span class="tooltiptext">
                     Insert PSA value from the third week of SRT in ng/ml.
@@ -164,7 +164,7 @@
               </label>
               <input name="psa3" type="number" min="0" max="3" step="0.01" placeholder="ng/ml">
 
-              <label for="psa4">PSA week 4, <em><b>PSA<sub>5</sub></b></em>
+              <label for="psa4">PSA at the 20<sup>th</sup> SRT fraction, <em><b>PSA<sub>5</sub></b></em>
                 <span class="tooltip"><img src="images/icon_q.svg" width="15" height="15">
                   <span class="tooltiptext">
                     Insert PSA value from the forth week of SRT in ng/ml.
@@ -179,7 +179,7 @@
               <label for="date0">Date
                 <span class="tooltip"><img src="images/icon_q.svg" width="15" height="15">
                   <span class="tooltiptext">
-                    Insert date of PSA<sub>0</sub> measurement.
+                    Insert date of PSA<sub>1</sub> measurement.
                   </span>
                 </span>
               </label>
@@ -188,7 +188,7 @@
               <label for="date1">Date
                 <span class="tooltip"><img src="images/icon_q.svg" width="15" height="15">
                   <span class="tooltiptext">
-                    Insert date of PSA<sub>1</sub> measurement.
+                    Insert date of PSA<sub>2</sub> measurement.
                   </span>
                 </span>
               </label>
@@ -197,7 +197,7 @@
               <label for="date2">Date
                 <span class="tooltip"><img src="images/icon_q.svg" width="15" height="15">
                   <span class="tooltiptext">
-                    Insert date of PSA<sub>2</sub> measurement.
+                    Insert date of PSA<sub>3</sub> measurement.
                   </span>
                 </span>
               </label>
@@ -206,7 +206,7 @@
               <label for="date3">Date
                 <span class="tooltip"><img src="images/icon_q.svg" width="15" height="15">
                   <span class="tooltiptext">
-                    Insert date of PSA<sub>3</sub> measurement.
+                    Insert date of PSA<sub>4</sub> measurement.
                   </span>
                 </span>
               </label>
@@ -215,7 +215,7 @@
               <label for="date4">Date
                 <span class="tooltip"><img src="images/icon_q.svg" width="15" height="15">
                   <span class="tooltiptext">
-                    Insert date of PSA<sub>4</sub> measurement.
+                    Insert date of PSA<sub>5</sub> measurement.
                   </span>
                 </span>
               </label>
@@ -239,8 +239,8 @@
               </div>
 
               <div>
-                <p>PSA decay constant, <em><b>k</b></em></p>
-                <p><em><b>k<sub>1w-4w</sub> : </b></em><span id="k-res"></span></p>
+                <p>PSA decay constant, <em><b>k<sub>PSA</sub></b></em></p>
+                <p><em><b>k<sub>PSA</sub> : </b></em><span id="k-res"></span></p>
               </div>
             </div>
             <div id="plotarea"></div>
