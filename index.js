@@ -58,7 +58,7 @@ inputform.addEventListener('submit', (e) => {
     //Fill P
     document.getElementById('p-res').innerHTML = `${(p * 100).toFixed(0)} %`;
     //Fill k-values
-    document.getElementById('k-res').innerHTML = `${k.toFixed(3)} week<sup>-1</sup`;
+    document.getElementById('k-res').innerHTML = `${k.toFixed(4)} week<sup>-1</sup`;
 
     plot();
 });
