@@ -30,7 +30,7 @@ inputform.addEventListener('submit', (e) => {
     }
 
     //At least one of PSA2 or PSA3 must be selected
-    if(input.k.length <= 3){
+    if(input.k.length < 3){
         alert('At least one of PSA2 or PSA3 must be filled.');
         return;
     }
@@ -120,7 +120,12 @@ function readInput() {
         }
     }
 
-    //If both PSA3 and PSA4 is unmeasureable remove PSA4
+    //If both PSA3, PSA4 and PSA5 is unmeasurable remove PSA4 and PSA5
+    if(input.k.length === 5 && input.k[2].psa === 0.05 && input.k[3].psa === 0.05 && input.k[4].psa === 0.05){
+        input.k.pop();
+        input.k.pop();
+    } 
+    //If both PSA4 and PSA5 is unmeasureable remove PSA4
     if(input.k.length === 5 && input.k[3].psa === 0.05 && input.k[4].psa === 0.05){
         input.k.pop();
     } 
@@ -167,7 +172,7 @@ function processInput(input) {
         x: [input[0].date],
         y: [input[0].psa],
         mode: 'markers',
-        name: 'PSA0'
+        name: 'PSA<sub>1</sub>'
     });
 
     //Add other PSA values to plot
